@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Devis Gratuit Site Web | Contact | Réponse sous 24h</title>
+  <meta name="description" content="Obtenez un devis gratuit pour votre site web ou votre stratégie SEO. Réponse garantie sous 24h. 100% en ligne, France & pays francophones.">
+  <meta name="keywords" content="devis site web gratuit en ligne, agence web 100% en ligne francophone">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Devis Gratuit Site Web | Contact">
+  <meta property="og:description" content="Réponse garantie sous 24h, 100% en ligne, France & francophonie.">
+  <meta property="og:url" content="/contact.html">
+  <link rel="canonical" href="/contact.html">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Schema.org ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact AGENCE",
+    "description": "Devis gratuit site web et SEO, réponse sous 24h",
+    "url": "/contact.html",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "AGENCE",
+      "email": "contact@agence.fr",
+      "areaServed": ["FR", "BE", "CH", "CA"]
+    }
+  }
+  </script>
+</head>
+<body>
+
+<div id="loader"><div class="loader-logo">AGENCE</div></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">A<span>.</span>GENCE</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a><a href="seo.html">SEO</a><a href="tarifs.html">Tarifs</a>
+      <a href="realisations.html">Réalisations</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary nav-cta">Devis gratuit</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mobile-overlay">
+  <a href="services.html">Services</a><a href="seo.html">SEO</a><a href="tarifs.html">Tarifs</a>
+  <a href="realisations.html">Réalisations</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+</nav>
+
+<main>
+
+<section class="hero hero-page">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Accueil</a> / Contact</div>
+    <span class="eyebrow">Devis gratuit</span>
+    <h1 data-split>Demandez votre devis gratuit en ligne</h1>
+    <p class="hero-subtitle" style="margin: 1.5rem auto 0;">Agence web 100% en ligne francophone. Décrivez votre projet, on revient vers vous sous 24h avec un devis site web gratuit en ligne.</p>
+  </div>
+</section>
+
+<!-- FORMULAIRE -->
+<section style="padding-top: 3rem;">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div data-reveal="left">
+        <form id="contact-form" novalidate aria-label="Formulaire de contact">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstname">Prénom *</label>
+              <input type="text" id="firstname" name="firstname" autocomplete="given-name" required>
+              <span class="form-error" data-err="firstname"></span>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Nom *</label>
+              <input type="text" id="lastname" name="lastname" autocomplete="family-name" required>
+              <span class="form-error" data-err="lastname"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="form-error" data-err="email"></span>
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+              <span class="form-error" data-err="phone"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="project">Type de projet *</label>
+              <select id="project" name="project" required>
+                <option value="">Choisir...</option>
+                <option value="starter">Site Starter (490€)</option>
+                <option value="essentiel">Site Essentiel (990€)</option>
+                <option value="premium">Site Premium (1 790€)</option>
+                <option value="seo">Plan SEO mensuel</option>
+                <option value="autre">Autre / Refonte</option>
+              </select>
+              <span class="form-error" data-err="project"></span>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget estimé *</label>
+              <select id="budget" name="budget" required>
+                <option value="">Choisir...</option>
+                <option>Moins de 500€</option>
+                <option>500€ — 1 000€</option>
+                <option>1 000€ — 2 000€</option>
+                <option>Plus de 2 000€</option>
+                <option>Plan mensuel SEO</option>
+              </select>
+              <span class="form-error" data-err="budget"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Décrivez votre projet *</label>
+            <textarea id="message" name="message" rows="6" placeholder="Quelques mots sur votre activité, vos objectifs, vos délais..." required></textarea>
+            <span class="form-error" data-err="message"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" id="rgpd" name="rgpd" required>
+              <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité (RGPD).</span>
+            </label>
+            <span class="form-error" data-err="rgpd"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:auto;"><span>Envoyer ma demande</span><span class="btn-arrow"></span></button>
+        </form>
+
+        <div id="form-success" style="display:none; padding: 2.5rem; background: var(--c-white); border-radius: var(--r-lg); border: 1.5px solid var(--c-primary); text-align:center;">
+          <h3 style="color: var(--c-primary-dark); margin-bottom: 1rem;">Merci !</h3>
+          <p>Votre demande est bien enregistrée. On revient vers vous sous 24h ouvrées avec une première réponse personnalisée.</p>
+        </div>
+      </div>
+
+      <aside class="contact-side" data-reveal="right">
+        <h3>Comment ça se passe</h3>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="label">Délai</div>
+            <div class="value">Réponse sous 24h ouvrées</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:contact@agence.fr">contact@agence.fr</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Appel découverte</div>
+            <div class="value"><a href="#" target="_blank" rel="noopener">Réserver un créneau Calendly →</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Zone</div>
+            <div class="value">France, Belgique, Suisse, Canada — partout en francophonie</div>
+          </div>
+        </div>
+        <a href="services.html" class="btn btn-secondary" style="width:100%; justify-content:center;"><span>Voir les formules</span></a>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3 ÉTAPES -->
+<section style="background: var(--c-bg-2);">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Le déroulé</span>
+      <h2>3 étapes simples</h2>
+    </div>
+    <div class="steps" data-stagger>
+      <div class="step">
+        <div class="step-icon">1</div>
+        <h4>Vous envoyez</h4>
+        <p>Décrivez votre projet via le formulaire. Quelques minutes suffisent.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">2</div>
+        <h4>On répond sous 24h</h4>
+        <p>Devis détaillé + appel découverte de 30 min si besoin.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">3</div>
+        <h4>On démarre votre projet</h4>
+        <p>Brief validé, acompte versé, on lance la production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA ALTERNATIF -->
+<section>
+  <div class="container">
+    <div style="background: var(--c-white); border-radius: var(--r-xl); padding: 3rem; text-align: center; border: 1px solid var(--c-border); max-width: 720px; margin: 0 auto;" data-reveal>
+      <span class="eyebrow">Pas encore prêt ?</span>
+      <h2 style="margin-bottom: 1rem;">Téléchargez notre guide gratuit</h2>
+      <p style="margin: 0 auto 1.6rem;">"10 erreurs à éviter quand on lance son site web" — un PDF de 12 pages, gratuit et sans inscription longue.</p>
+      <a href="#" class="btn btn-primary"><span>Télécharger le guide</span><span class="btn-arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><a href="index.html" class="logo">A<span>.</span>GENCE</a><p>Agence web freelance 100% en ligne.</p></div>
+      <div><h5>Services</h5><ul class="footer-links"><li><a href="services.html">Création site web</a></li><li><a href="seo.html">SEO & Contenu</a></li><li><a href="tarifs.html">Tarifs</a></li></ul></div>
+      <div><h5>Agence</h5><ul class="footer-links"><li><a href="apropos.html">À propos</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h5>Contact</h5><ul class="footer-links"><li><a href="mailto:contact@agence.fr">contact@agence.fr</a></li><li>France & Francophonie</li><li>Réponse sous 24h</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 AGENCE — Fait avec ❤️ en France</p></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
