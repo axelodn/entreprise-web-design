@@ -1,0 +1,89 @@
+/* ========================================
+   AGENCE WEB - ANIMATIONS COMPLEMENTAIRES
+   ======================================== */
+
+/* Float animation pour décorations */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -20px); }
+}
+.float { animation: float 6s ease-in-out infinite; }
+
+/* SVG path draw */
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+.draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawPath 3s ease forwards;
+}
+
+/* Mots-clés flottants pour SEO hero */
+.floating-words {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.floating-words span {
+  position: absolute;
+  font-family: var(--f-title);
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  color: rgba(46, 204, 143, 0.25);
+  font-weight: 500;
+  white-space: nowrap;
+  animation: floatWord 18s linear infinite;
+}
+@keyframes floatWord {
+  0% { transform: translateY(100vh); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { transform: translateY(-20vh); opacity: 0; }
+}
+
+/* Split reveal */
+.split-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.split-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.9s cubic-bezier(0.5, 0, 0.1, 1);
+}
+.split-reveal.in > span { transform: translateY(0); }
+
+/* Counter pulse */
+@keyframes counterPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.stat-num.counting { animation: counterPulse 0.6s ease; }
+
+/* Hover scale image */
+.hover-scale { overflow: hidden; }
+.hover-scale > * { transition: transform 0.7s ease; }
+.hover-scale:hover > * { transform: scale(1.05); }
+
+/* Subtle shake on error */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.shake { animation: shake 0.4s ease; }
+
+/* Page transition */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--c-bg);
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.page-transition.active { opacity: 1; }
