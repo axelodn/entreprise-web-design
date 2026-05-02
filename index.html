@@ -77,13 +77,54 @@
 
 <main>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO 3D -->
+  <section class="hero hero-3d">
     <div class="hero-bg"></div>
+    <div class="hero-mesh"></div>
     <canvas id="particles-canvas"></canvas>
-    <div class="container hero-content">
+
+    <!-- Scène 3D -->
+    <div class="hero-scene" id="heroScene">
+      <div class="hero-grid-floor"></div>
+
+      <div class="shape-wrap shape-wrap-octa" data-depth="1.5">
+        <div class="hero-shape hero-shape-octahedron">
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+        </div>
+      </div>
+
+      <div class="shape-wrap shape-wrap-cube" data-depth="2">
+        <div class="hero-shape hero-shape-cube">
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+        </div>
+      </div>
+
+      <div class="shape-wrap shape-wrap-ring" data-depth="0.8">
+        <div class="hero-shape hero-shape-ring">
+          <div class="ring-inner"></div>
+        </div>
+      </div>
+
+      <div class="shape-wrap shape-wrap-pyramid" data-depth="1.2">
+        <div class="hero-shape hero-shape-pyramid">
+          <div class="shape-face"></div><div class="shape-face"></div>
+          <div class="shape-face"></div><div class="shape-face"></div>
+        </div>
+      </div>
+
+      <div class="hero-orbit">
+        <div class="orbit-dot"></div>
+      </div>
+    </div>
+
+    <div class="container hero-content" data-parallax-content>
       <span class="eyebrow">Agence web freelance</span>
-      <h1 data-split>Création de site web sur mesure — Freelance 100% en ligne</h1>
+      <h1 data-split data-holo>Création de site web sur mesure — Freelance 100% en ligne</h1>
       <p class="hero-subtitle">Des sites web professionnels livrés en 5 à 21 jours, SEO inclus, sans abonnement plateforme. Pour artisans, entrepreneurs et startups en France et dans la francophonie.</p>
       <div class="hero-cta">
         <a href="contact.html" class="btn btn-primary"><span>Demander un devis</span><span class="btn-arrow"></span></a>
@@ -93,6 +134,12 @@
         <span class="dot"></span>
         <span>France & Francophonie · 100% en ligne · Prix fixes</span>
       </div>
+    </div>
+
+    <!-- Indicateur scroll -->
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"><div class="scroll-line-fill"></div></div>
     </div>
   </section>
 
@@ -242,6 +289,115 @@
     </div>
   </section>
 
+  <!-- FAQ 3D -->
+  <section class="faq-3d-section">
+    <div class="faq-3d-bg">
+      <div class="faq-orb faq-orb-1"></div>
+      <div class="faq-orb faq-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="section-head" data-reveal style="color:var(--c-white);">
+        <span class="eyebrow" style="color:var(--c-primary);">FAQ</span>
+        <h2 style="color:var(--c-white);">Tout ce que vous voulez savoir</h2>
+        <p style="color:rgba(255,255,255,0.55);">Les vraies questions, avec les vraies réponses.</p>
+      </div>
+      <div class="faq-3d-grid">
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">01</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Combien coûte la création d'un site web ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Nos formules démarrent à <strong>490€</strong> pour un site vitrine 1 page, jusqu'à <strong>1 790€</strong> pour un site complet avec blog et SEO avancé. Tous les prix sont fixes et affichés — aucune mauvaise surprise en cours de projet.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">02</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Quel est le délai de livraison ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Entre <strong>5 et 21 jours</strong> selon la formule. Starter livré en 5 jours, Essentiel en 10, Premium en 3 semaines. Le délai est garanti dès la commande — pas d'excuses, pas de retard.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">03</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Est-ce que je possède vraiment mon site ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Oui, à <strong>100%</strong>. Code source et hébergement à votre nom. Zéro dépendance à Webflow, Wix ou Squarespace. Si vous partez demain, votre site part avec vous.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">04</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Le SEO est-il vraiment inclus ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Dès la livraison : balises meta, Schema.org, sitemap, images compressées, <strong>score Lighthouse 90+</strong>. Votre site est techniquement prêt à ranker dès le premier jour.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">05</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Je ne suis pas en France, vous travaillez avec moi ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Absolument. France, Belgique, Suisse, Canada et toute la francophonie. Tout se passe en ligne : brief, échanges, livraison. Pas besoin de se déplacer.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">06</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Que se passe-t-il après la livraison ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p>Fichiers sources, accès hébergement, guide de prise en main. Plan maintenance optionnel. <strong>Aucun abonnement imposé</strong> — vous décidez.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-3d-item" data-faq>
+          <div class="faq-3d-num">07</div>
+          <div class="faq-3d-content">
+            <button class="faq-3d-q">
+              <span>Comment se passe le paiement ?</span>
+              <div class="faq-3d-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </button>
+            <div class="faq-3d-a">
+              <p><strong>50% à la commande, 50% à la livraison.</strong> Virement bancaire ou carte (Stripe). Facture émise à chaque étape. Aucun acompte caché.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA FINALE -->
   <section class="cta-final">
     <div class="container">
@@ -255,39 +411,47 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo">A<span>.</span>GENCE</a>
-        <p>Agence web freelance 100% en ligne — Création de sites web sur mesure et SEO pour artisans, entrepreneurs et startups.</p>
+  <div class="footer-inner">
+    <div class="footer-watermark">A.GENCE</div>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">A<span>.</span>GENCE</a>
+          <p class="footer-desc">Création de sites web sur mesure, livrés en 5 à 21 jours. SEO inclus, prix fixes, 100% à vous.</p>
+          <div class="footer-badge-live"><span class="dot"></span>Disponible pour nouveaux projets</div>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="seo.html">SEO &amp; Contenu</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Agence</h5>
+          <ul class="footer-links">
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="realisations.html">Réalisations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:contact@agence.fr">contact@agence.fr</a></li>
+            <li>France &amp; Francophonie</li>
+            <li>Réponse sous 24h</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h5>Services</h5>
-        <ul class="footer-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="seo.html">SEO & Contenu</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>© 2026 AGENCE — Fait avec ♥ en France</p>
+        <div class="footer-bottom-right">
+          <a href="#">Mentions légales</a>
+          <a href="#">Politique de confidentialité</a>
+        </div>
       </div>
-      <div>
-        <h5>Agence</h5>
-        <ul class="footer-links">
-          <li><a href="apropos.html">À propos</a></li>
-          <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact</h5>
-        <ul class="footer-links">
-          <li><a href="mailto:contact@agence.fr">contact@agence.fr</a></li>
-          <li>France & Francophonie</li>
-          <li>Réponse sous 24h</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 AGENCE — Fait avec ❤️ en France · <a href="#">Mentions légales</a></p>
     </div>
   </div>
 </footer>
@@ -298,7 +462,7 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 <script src="js/cursor.js"></script>
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
+<script src="js/main.js?v=2"></script>
+<script src="js/animations.js?v=3"></script>
 </body>
 </html>

@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timer = setInterval(next, 6000);
   }
 
-  /* ---------- FAQ ACCORDION ---------- */
+  /* ---------- FAQ ACCORDION (legacy) ---------- */
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.parentElement;
@@ -141,6 +141,88 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  /* ---------- HERO 3D PARALLAX ---------- */
+  const heroScene = document.getElementById('heroScene');
+  const heroContent = document.querySelector('[data-parallax-content]');
+  const heroSection = document.querySelector('.hero-3d');
+
+  if (heroScene && heroSection && window.matchMedia('(min-width: 768px)').matches) {
+    const wrappers = heroScene.querySelectorAll('.shape-wrap[data-depth]');
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    const onMouseMove = (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    };
+
+    const animate = () => {
+      targetX += (mouseX - targetX) * 0.08;
+      targetY += (mouseY - targetY) * 0.08;
+
+      wrappers.forEach(wrap => {
+        const depth = parseFloat(wrap.dataset.depth) || 1;
+        const tx = -targetX * 35 * depth;
+        const ty = -targetY * 35 * depth;
+        wrap.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      });
+
+      if (heroContent) {
+        const rotX = -targetY * 2;
+        const rotY = targetX * 2;
+        const tx = targetX * -8;
+        const ty = targetY * -8;
+        heroContent.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) translate3d(${tx}px, ${ty}px, 0)`;
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    heroSection.addEventListener('mousemove', onMouseMove);
+    heroSection.addEventListener('mouseleave', () => {
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  /* ---------- HERO HOLO TEXT (split for animation) ---------- */
+  // Already handled by data-split
+
+  /* ---------- FAQ 3D HOMEPAGE ---------- */
+  const faq3dItems = document.querySelectorAll('[data-faq]');
+
+  // Staggered entrance via IntersectionObserver
+  if (faq3dItems.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll ? [entry.target] : [];
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    faq3dItems.forEach((item, i) => {
+      item.style.transitionDelay = `${i * 0.07}s`;
+      observer.observe(item);
+    });
+
+    // Accordion logic
+    faq3dItems.forEach(item => {
+      const btn = item.querySelector('.faq-3d-q');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('faq-open');
+        faq3dItems.forEach(el => el.classList.remove('faq-open'));
+        if (!isOpen) item.classList.add('faq-open');
+      });
+    });
+  }
 
   /* ---------- TILT 3D SUR CARTES (vanilla-tilt) ---------- */
   if (window.VanillaTilt) {

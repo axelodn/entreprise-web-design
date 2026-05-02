@@ -22,17 +22,20 @@ if (window.gsap && window.ScrollTrigger) {
 
   /* Stagger sur grilles cartes */
   gsap.utils.toArray('[data-stagger]').forEach(group => {
-    const items = group.children;
-    gsap.from(items, {
-      y: 50,
-      opacity: 0,
-      duration: 0.9,
-      stagger: 0.12,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: group,
-        start: 'top 82%',
-        toggleActions: 'play none none none'
+    const items = Array.from(group.children);
+    ScrollTrigger.create({
+      trigger: group,
+      start: 'top 95%',
+      once: true,
+      onEnter: () => {
+        gsap.from(items, {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+          clearProps: 'all'
+        });
       }
     });
   });
