@@ -1466,7 +1466,7 @@ footer h5 {
 }
 .timeline-num {
   width: 60px; height: 60px;
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border: 2px solid var(--c-primary);
   border-radius: 50%;
   margin: 0 auto 1rem;
@@ -1488,7 +1488,7 @@ footer h5 {
 /* ---------- FAQ ACCORDION (legacy tarifs page) ---------- */
 .faq { max-width: 820px; margin: 0 auto; }
 .faq-item {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: var(--r-md);
   margin-bottom: 1rem;
   border: 1px solid var(--c-border);
@@ -1669,7 +1669,7 @@ footer h5 {
 /* ---------- TOGGLE ---------- */
 .toggle-switch {
   display: inline-flex;
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: 100px;
   padding: 6px;
   border: 1px solid var(--c-border);
@@ -1816,7 +1816,7 @@ footer h5 {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--c-text-soft);
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border: 1px solid var(--c-border);
   transition: all var(--t-fast);
 }
@@ -1831,7 +1831,7 @@ footer h5 {
   gap: 2rem;
 }
 .project-card {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid var(--c-border);
@@ -1902,7 +1902,7 @@ footer h5 {
 }
 .modal.open { opacity: 1; visibility: visible; }
 .modal-inner {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: var(--r-xl);
   padding: 3rem;
   max-width: 720px;
@@ -1945,7 +1945,7 @@ footer h5 {
 .form-group textarea {
   width: 100%;
   padding: 0.9rem 1.1rem;
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border: 1.5px solid var(--c-border);
   border-radius: var(--r-md);
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
@@ -1974,7 +1974,7 @@ footer h5 {
 }
 .form-checkbox input { width: auto; margin-top: 3px; }
 .contact-side {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: var(--r-xl);
   padding: 2.4rem;
   border: 1px solid var(--c-border);
@@ -2029,7 +2029,7 @@ footer h5 {
   margin-top: 3rem;
 }
 .seo-block {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   padding: 2.4rem;
   border-radius: var(--r-lg);
   border: 1px solid var(--c-border);
@@ -2047,7 +2047,7 @@ footer h5 {
   gap: 1.6rem;
 }
 .seo-service {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   padding: 1.8rem;
   border-radius: var(--r-md);
   border: 1px solid var(--c-border);
@@ -2063,7 +2063,7 @@ footer h5 {
   margin-bottom: 1rem;
 }
 .seo-chart {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   border-radius: var(--r-xl);
   padding: 3rem;
   border: 1px solid var(--c-border);
@@ -2081,7 +2081,7 @@ footer h5 {
   gap: 1.6rem;
 }
 .value {
-  background: var(--c-white);
+  background: var(--c-bg-2);
   padding: 2rem;
   border-radius: var(--r-lg);
   border: 1px solid var(--c-border);
