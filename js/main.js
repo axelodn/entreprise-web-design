@@ -179,43 +179,45 @@ document.addEventListener('DOMContentLoaded', () => {
   if (particlesCanvas) {
     const ctx = particlesCanvas.getContext('2d');
     let PW, PH;
-    const PARTICLE_COUNT = 90;
-    const CONNECTION_DIST = 150;
-    const MOUSE_REPEL_DIST = 130;
+    const PARTICLE_COUNT = 160;
+    const CONNECTION_DIST = 180;
+    const MOUSE_REPEL_DIST = 140;
     let particles = [];
-    let pmouse = { x: -2000, y: -2000 };
+    let pmouse = { x: -9999, y: -9999 };
+    let pAnimId;
 
     function resizeCanvas() {
-      PW = particlesCanvas.width = particlesCanvas.offsetWidth;
-      PH = particlesCanvas.height = particlesCanvas.offsetHeight;
+      PW = particlesCanvas.width = particlesCanvas.offsetWidth || window.innerWidth;
+      PH = particlesCanvas.height = particlesCanvas.offsetHeight || window.innerHeight;
     }
 
     function createParticles() {
       particles = Array.from({ length: PARTICLE_COUNT }, () => ({
         x: Math.random() * PW,
         y: Math.random() * PH,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.6 + 0.5,
-        opacity: Math.random() * 0.55 + 0.25,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.4,
       }));
     }
 
-    const heroSec3d = document.querySelector('.hero-3d');
-    if (heroSec3d) {
-      heroSec3d.addEventListener('mousemove', e => {
+    const heroAether = document.getElementById('heroAether');
+    if (heroAether) {
+      heroAether.addEventListener('mousemove', e => {
         const rect = particlesCanvas.getBoundingClientRect();
         pmouse.x = e.clientX - rect.left;
         pmouse.y = e.clientY - rect.top;
       }, { passive: true });
-      heroSec3d.addEventListener('mouseleave', () => {
-        pmouse.x = -2000; pmouse.y = -2000;
+      heroAether.addEventListener('mouseleave', () => {
+        pmouse.x = -9999; pmouse.y = -9999;
       });
     }
 
     function drawParticles() {
       ctx.clearRect(0, 0, PW, PH);
 
+      /* update + draw nodes */
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
@@ -224,117 +226,75 @@ document.addEventListener('DOMContentLoaded', () => {
         const dym = p.y - pmouse.y;
         const distM = Math.sqrt(dxm * dxm + dym * dym);
         if (distM < MOUSE_REPEL_DIST && distM > 0) {
-          const force = (MOUSE_REPEL_DIST - distM) / MOUSE_REPEL_DIST;
-          p.vx += (dxm / distM) * force * 0.35;
-          p.vy += (dym / distM) * force * 0.35;
+          const force = (1 - distM / MOUSE_REPEL_DIST) * 0.5;
+          p.vx += (dxm / distM) * force;
+          p.vy += (dym / distM) * force;
         }
 
-        // Damping
-        p.vx *= 0.975;
-        p.vy *= 0.975;
+        p.vx *= 0.97;
+        p.vy *= 0.97;
 
-        // Speed cap
         const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        if (spd > 1.8) { p.vx = (p.vx / spd) * 1.8; p.vy = (p.vy / spd) * 1.8; }
+        if (spd > 2) { p.vx = (p.vx / spd) * 2; p.vy = (p.vy / spd) * 2; }
 
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap edges
-        if (p.x < -5) p.x = PW + 5;
-        if (p.x > PW + 5) p.x = -5;
-        if (p.y < -5) p.y = PH + 5;
-        if (p.y > PH + 5) p.y = -5;
+        if (p.x < 0) p.x = PW; if (p.x > PW) p.x = 0;
+        if (p.y < 0) p.y = PH; if (p.y > PH) p.y = 0;
 
-        // Draw dot
+        // Node glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(46,204,143,${p.opacity})`;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = 'rgba(46,204,143,0.6)';
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
 
-      // Draw connections
+      /* draw edges */
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
           const dx = a.x - b.x, dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            const baseOpacity = (1 - dist / CONNECTION_DIST) * 0.22;
+            const baseAlpha = (1 - dist / CONNECTION_DIST) * 0.35;
+
+            // Mouse proximity highlight
             const midX = (a.x + b.x) * 0.5, midY = (a.y + b.y) * 0.5;
             const mdx = midX - pmouse.x, mdy = midY - pmouse.y;
-            const mouseProx = Math.sqrt(mdx * mdx + mdy * mdy);
-            const nearMouse = mouseProx < 160;
+            const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+            const boost = mDist < 180 ? (1 - mDist / 180) * 4 : 0;
+
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = nearMouse
-              ? `rgba(46,204,143,${baseOpacity * 3.5})`
-              : `rgba(46,204,143,${baseOpacity})`;
-            ctx.lineWidth = nearMouse ? 0.9 : 0.45;
+            ctx.strokeStyle = `rgba(46,204,143,${Math.min(baseAlpha + boost * 0.35, 0.95)})`;
+            ctx.lineWidth = boost > 0.5 ? 1 : 0.55;
             ctx.stroke();
           }
         }
       }
 
-      requestAnimationFrame(drawParticles);
+      pAnimId = requestAnimationFrame(drawParticles);
     }
 
-    window.addEventListener('resize', () => { resizeCanvas(); createParticles(); }, { passive: true });
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(pAnimId);
+      resizeCanvas();
+      createParticles();
+      drawParticles();
+    }, { passive: true });
+
     resizeCanvas();
     createParticles();
     drawParticles();
   }
 
-  /* ---------- HERO 3D PARALLAX ---------- */
-  const heroScene = document.getElementById('heroScene');
-  const heroContent = document.querySelector('[data-parallax-content]');
-  const heroSection = document.querySelector('.hero-3d');
-
-  if (heroScene && heroSection && window.matchMedia('(min-width: 768px)').matches) {
-    const wrappers = heroScene.querySelectorAll('.shape-wrap[data-depth]');
-    let mouseX = 0, mouseY = 0;
-    let targetX = 0, targetY = 0;
-
-    const onMouseMove = (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    };
-
-    const animate = () => {
-      targetX += (mouseX - targetX) * 0.08;
-      targetY += (mouseY - targetY) * 0.08;
-
-      wrappers.forEach(wrap => {
-        const depth = parseFloat(wrap.dataset.depth) || 1;
-        const tx = -targetX * 35 * depth;
-        const ty = -targetY * 35 * depth;
-        wrap.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
-      });
-
-      if (heroContent) {
-        const rotX = -targetY * 2;
-        const rotY = targetX * 2;
-        const tx = targetX * -8;
-        const ty = targetY * -8;
-        heroContent.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) translate3d(${tx}px, ${ty}px, 0)`;
-      }
-
-      requestAnimationFrame(animate);
-    };
-
-    heroSection.addEventListener('mousemove', onMouseMove);
-    heroSection.addEventListener('mouseleave', () => {
-      mouseX = 0;
-      mouseY = 0;
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  /* ---------- HERO HOLO TEXT (split for animation) ---------- */
-  // Already handled by data-split
+  /* ---------- HERO HOLO TEXT ---------- */
+  // Handled by data-split above
 
   /* ---------- FAQ 3D HOMEPAGE ---------- */
   const faq3dItems = document.querySelectorAll('[data-faq]');
