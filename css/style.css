@@ -1561,12 +1561,17 @@ footer h5 {
   color: var(--c-white);
 }
 .faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.faq-a > div { padding: 0 1.8rem 1.6rem; color: var(--c-text-soft); }
-.faq-item.open .faq-a { max-height: 400px; }
+.faq-a > div {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 1.8rem 1.6rem;
+  color: var(--c-text-soft);
+}
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
 
 /* ---------- FAQ 3D HOMEPAGE ---------- */
 .faq-3d-section {
@@ -1683,9 +1688,13 @@ footer h5 {
   color: #fff;
 }
 .faq-3d-a {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-3d-a > * {
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 0;
 }
 .faq-3d-a p {
   padding: 0 1.8rem 1.6rem;
@@ -1695,7 +1704,7 @@ footer h5 {
   font-size: 0.97rem;
 }
 .faq-3d-a p strong { color: rgba(255,255,255,0.9); font-weight: 600; }
-.faq-3d-item.faq-open .faq-3d-a { max-height: 200px; }
+.faq-3d-item.faq-open .faq-3d-a { grid-template-rows: 1fr; }
 
 @media (max-width: 600px) {
   .faq-3d-num { display: none; }
