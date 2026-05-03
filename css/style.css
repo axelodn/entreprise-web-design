@@ -581,7 +581,7 @@ section { padding: 7rem 0; position: relative; }
   overflow: hidden;
 }
 .hero-aether {
-  background: #0a0a0a;
+  background: var(--c-bg);
   justify-content: center;
 }
 #particles-canvas {
@@ -781,7 +781,7 @@ section { padding: 7rem 0; position: relative; }
 
 /* ---------- STATS / COMPTEURS ---------- */
 .stats {
-  background: var(--c-bg-2);
+  background: var(--c-bg);
   padding: 5rem 0;
 }
 .stats-grid {
@@ -897,7 +897,7 @@ section { padding: 7rem 0; position: relative; }
 
 /* ---------- TÉMOIGNAGES CAROUSEL ---------- */
 .testimonials {
-  background: var(--c-bg-2);
+  background: var(--c-bg);
 }
 .testimonial-wrap {
   max-width: 800px;
@@ -965,7 +965,7 @@ section { padding: 7rem 0; position: relative; }
 
 /* ---------- CTA FINALE PREMIUM ---------- */
 .cta-final {
-  background: #0e0e0e;
+  background: var(--c-bg);
   position: relative;
   text-align: center;
   color: var(--c-white);
