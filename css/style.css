@@ -639,7 +639,7 @@ section { padding: 7rem 0; position: relative; }
   flex-wrap: wrap;
   margin-bottom: 0;
   opacity: 0;
-  animation: fadeUp 0.9s 0.75s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: fadeUp 0.9s 0.85s cubic-bezier(0.16,1,0.3,1) forwards;
 }
 .hero-cta-center { justify-content: center; }
 .btn-lg { padding: 1.15rem 2.4rem; font-size: 1rem; }
@@ -694,6 +694,39 @@ section { padding: 7rem 0; position: relative; }
   margin-bottom: 1rem;
 }
 .hero-page .breadcrumb a:hover { color: var(--c-primary-dark); }
+
+/* ---------- HERO SERVICES PILLS ---------- */
+.hero-services {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.3rem;
+  margin-bottom: 2.4rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.65s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-service-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(240,237,232,0.65);
+  letter-spacing: 0.01em;
+  transition: color var(--t-fast);
+}
+.hero-service-item svg {
+  color: var(--c-primary);
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+.hero-service-sep {
+  color: rgba(255,255,255,0.15);
+  font-size: 0.85rem;
+  user-select: none;
+  padding: 0 0.15rem;
+}
 
 /* ---------- GOOGLE REVIEW BADGE ---------- */
 .google-review-badge {
