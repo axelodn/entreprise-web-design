@@ -695,6 +695,57 @@ section { padding: 7rem 0; position: relative; }
 }
 .hero-page .breadcrumb a:hover { color: var(--c-primary-dark); }
 
+/* ---------- GOOGLE REVIEW BADGE ---------- */
+.google-review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.65rem 1.3rem 0.65rem 0.9rem;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.google-review-badge:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+.google-g { flex-shrink: 0; }
+.google-review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.google-review-top {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.google-score {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.google-stars {
+  font-size: 0.75rem;
+  color: #FBBC05;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.google-review-label {
+  font-size: 0.7rem;
+  color: rgba(240,237,232,0.45);
+  letter-spacing: 0.02em;
+}
+
 /* ---------- STATS / COMPTEURS ---------- */
 .stats {
   background: var(--c-bg-2);
