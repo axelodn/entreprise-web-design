@@ -605,7 +605,7 @@ section { padding: 7rem 0; position: relative; }
   gap: 0;
 }
 .hero h1 {
-  font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 0.9s 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
