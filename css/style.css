@@ -1408,7 +1408,6 @@ footer h5 {
   padding: 2.6rem;
   border: 1px solid var(--c-border);
   position: relative;
-  overflow: hidden;
   transition: transform var(--t-mid), box-shadow var(--t-mid), border-color var(--t-mid);
 }
 .price-card::after {
@@ -1427,16 +1426,19 @@ footer h5 {
   transform: scale(1.03);
 }
 .price-card.featured::before {
-  content: 'Recommandé';
+  content: '⚡ Recommandé';
   position: absolute;
-  top: -14px; left: 50%;
+  top: -18px; left: 50%;
   transform: translateX(-50%);
   background: var(--c-primary);
-  color: var(--c-white);
-  padding: 0.3rem 1rem;
+  color: #0e0e0e;
+  padding: 0.4rem 1.2rem;
   border-radius: 100px;
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(46,204,143,0.5);
+  letter-spacing: 0.04em;
 }
 .price-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(46,204,143,0.25); border-color: rgba(46,204,143,0.3); }
 .price-card.featured:hover { transform: scale(1.03) translateY(-6px); }
