@@ -142,6 +142,150 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- FOOTER TEXT HOVER EFFECT ---------- */
+  const footerFx = document.getElementById('footerTextFx');
+  if (footerFx) {
+    const svg = footerFx.querySelector('svg');
+    const grad = footerFx.querySelector('#textGrad');
+    const revealMask = footerFx.querySelector('#revealMask');
+    const fillText = footerFx.querySelector('.footer-hover-text-fill');
+    let active = false;
+
+    fillText.style.opacity = '0';
+
+    const updatePos = (e) => {
+      const rect = svg.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 600;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      grad.setAttribute('fx', `${(x/600)*100}%`);
+      grad.setAttribute('fy', `${(y/100)*100}%`);
+      revealMask.setAttribute('cx', x);
+      revealMask.setAttribute('cy', y);
+    };
+
+    footerFx.addEventListener('mouseenter', () => {
+      active = true;
+      fillText.style.opacity = '1';
+    });
+    footerFx.addEventListener('mouseleave', () => {
+      active = false;
+      fillText.style.opacity = '0';
+    });
+    footerFx.addEventListener('mousemove', updatePos);
+  }
+
+  /* ---------- AETHERFLOW PARTICLES ---------- */
+  const particlesCanvas = document.getElementById('particles-canvas');
+  if (particlesCanvas) {
+    const ctx = particlesCanvas.getContext('2d');
+    let PW, PH;
+    const PARTICLE_COUNT = 90;
+    const CONNECTION_DIST = 150;
+    const MOUSE_REPEL_DIST = 130;
+    let particles = [];
+    let pmouse = { x: -2000, y: -2000 };
+
+    function resizeCanvas() {
+      PW = particlesCanvas.width = particlesCanvas.offsetWidth;
+      PH = particlesCanvas.height = particlesCanvas.offsetHeight;
+    }
+
+    function createParticles() {
+      particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+        x: Math.random() * PW,
+        y: Math.random() * PH,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 1.6 + 0.5,
+        opacity: Math.random() * 0.55 + 0.25,
+      }));
+    }
+
+    const heroSec3d = document.querySelector('.hero-3d');
+    if (heroSec3d) {
+      heroSec3d.addEventListener('mousemove', e => {
+        const rect = particlesCanvas.getBoundingClientRect();
+        pmouse.x = e.clientX - rect.left;
+        pmouse.y = e.clientY - rect.top;
+      }, { passive: true });
+      heroSec3d.addEventListener('mouseleave', () => {
+        pmouse.x = -2000; pmouse.y = -2000;
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, PW, PH);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Mouse repulsion
+        const dxm = p.x - pmouse.x;
+        const dym = p.y - pmouse.y;
+        const distM = Math.sqrt(dxm * dxm + dym * dym);
+        if (distM < MOUSE_REPEL_DIST && distM > 0) {
+          const force = (MOUSE_REPEL_DIST - distM) / MOUSE_REPEL_DIST;
+          p.vx += (dxm / distM) * force * 0.35;
+          p.vy += (dym / distM) * force * 0.35;
+        }
+
+        // Damping
+        p.vx *= 0.975;
+        p.vy *= 0.975;
+
+        // Speed cap
+        const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (spd > 1.8) { p.vx = (p.vx / spd) * 1.8; p.vy = (p.vy / spd) * 1.8; }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap edges
+        if (p.x < -5) p.x = PW + 5;
+        if (p.x > PW + 5) p.x = -5;
+        if (p.y < -5) p.y = PH + 5;
+        if (p.y > PH + 5) p.y = -5;
+
+        // Draw dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(46,204,143,${p.opacity})`;
+        ctx.fill();
+      }
+
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) {
+            const baseOpacity = (1 - dist / CONNECTION_DIST) * 0.22;
+            const midX = (a.x + b.x) * 0.5, midY = (a.y + b.y) * 0.5;
+            const mdx = midX - pmouse.x, mdy = midY - pmouse.y;
+            const mouseProx = Math.sqrt(mdx * mdx + mdy * mdy);
+            const nearMouse = mouseProx < 160;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = nearMouse
+              ? `rgba(46,204,143,${baseOpacity * 3.5})`
+              : `rgba(46,204,143,${baseOpacity})`;
+            ctx.lineWidth = nearMouse ? 0.9 : 0.45;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    window.addEventListener('resize', () => { resizeCanvas(); createParticles(); }, { passive: true });
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+  }
+
   /* ---------- HERO 3D PARALLAX ---------- */
   const heroScene = document.getElementById('heroScene');
   const heroContent = document.querySelector('[data-parallax-content]');
