@@ -1395,6 +1395,119 @@ footer h5 {
   .footer-watermark { display: none; }
 }
 
+/* ---------- PRICING CARDS (style Karam) ---------- */
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  margin-top: 3rem;
+  text-align: left;
+}
+@media (max-width: 1100px) { .pricing-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .pricing-cards-grid { grid-template-columns: 1fr; } }
+
+.pcard {
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--t-mid), box-shadow var(--t-mid), border-color var(--t-mid);
+}
+.pcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(46,204,143,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--t-mid);
+  pointer-events: none;
+}
+.pcard:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(46,204,143,0.2); border-color: rgba(46,204,143,0.25); }
+.pcard:hover::after { opacity: 1; }
+
+.pcard-featured {
+  background: rgba(46,204,143,0.07);
+  border-color: rgba(46,204,143,0.35);
+}
+.pcard-custom {
+  border-style: dashed;
+  border-color: rgba(46,204,143,0.2);
+}
+.pcard-badge {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  background: var(--c-primary);
+  color: #0e0e0e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+.pcard-icon { font-size: 2rem; margin-bottom: 1rem; line-height: 1; }
+.pcard-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin-bottom: 0.3rem;
+  font-family: var(--f-title);
+}
+.pcard-desc { font-size: 0.87rem; color: var(--c-text-soft); margin-bottom: 1.4rem; max-width: 100%; }
+.pcard-price {
+  font-family: var(--f-title);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--c-primary);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.pcard-price span { font-size: 1rem; font-weight: 400; color: var(--c-text-soft); }
+.pcard-devis { font-size: 2rem; }
+.pcard-cta { width: 100%; justify-content: center; margin: 1.4rem 0; }
+.pcard-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+  margin-top: auto;
+}
+.pcard-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: var(--c-text);
+}
+.pcard-features li.ok::before {
+  content: '';
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(46,204,143,0.15);
+  border: 1.5px solid var(--c-primary);
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232ECC8F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.pcard-features li.no {
+  opacity: 0.35;
+}
+.pcard-features li.no::before {
+  content: '';
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* ---------- TARIFS / PRICING ---------- */
 .pricing-grid {
   display: grid;
