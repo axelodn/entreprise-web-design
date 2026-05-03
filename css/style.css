@@ -1411,7 +1411,7 @@ footer h5 {
   overflow: hidden;
   transition: transform var(--t-mid), box-shadow var(--t-mid), border-color var(--t-mid);
 }
-.price-card::before {
+.price-card::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1419,8 +1419,9 @@ footer h5 {
   opacity: 0;
   transition: opacity var(--t-mid);
   pointer-events: none;
+  z-index: 0;
 }
-.price-card:hover::before { opacity: 1; }
+.price-card:hover::after { opacity: 1; }
 .price-card.featured {
   border: 2px solid var(--c-primary);
   transform: scale(1.03);
