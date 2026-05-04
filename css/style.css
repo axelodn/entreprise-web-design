@@ -743,7 +743,7 @@ section { padding: 7rem 0; position: relative; }
 }
 .btn-lg { padding: 1.15rem 2.4rem; font-size: 1rem; }
 
-/* ---- ORBITE ---- */
+/* ---- VISUAL HERO (droite) ---- */
 .hero-visual {
   display: flex;
   align-items: center;
@@ -753,27 +753,38 @@ section { padding: 7rem 0; position: relative; }
 }
 @keyframes fadeIn { to { opacity: 1; } }
 
-.orbit-container {
+/* Conteneur 440×440, centre à 220px */
+.hv-wrap {
   position: relative;
-  width: 380px; height: 380px;
+  width: 440px;
+  height: 440px;
+  flex-shrink: 0;
 }
-.geo-ring {
+
+/* Anneaux */
+.hv-ring {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   border-radius: 50%;
+  pointer-events: none;
 }
-.r1 { width: 200px; height: 200px; border: 1px solid rgba(46,204,143,.2); }
-.r2 {
-  width: 350px; height: 350px;
+.hv-r1 {
+  width: 220px; height: 220px;
+  border: 1px solid rgba(46,204,143,.2);
+}
+.hv-r2 {
+  width: 380px; height: 380px;
   border: 1px dashed rgba(46,204,143,.12);
-  animation: ringPulse 8s ease-in-out infinite;
+  animation: hvRingSpin 28s linear infinite;
 }
-@keyframes ringPulse {
-  0%,100% { transform:translate(-50%,-50%) scale(1);   opacity:.5; }
-  50%      { transform:translate(-50%,-50%) scale(1.02); opacity:1; }
+@keyframes hvRingSpin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
 }
-.geo-center {
+
+/* Logo central */
+.hv-core {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
@@ -791,42 +802,36 @@ section { padding: 7rem 0; position: relative; }
   z-index: 2;
   box-shadow: 0 0 0 12px rgba(46,204,143,.08), 0 0 60px rgba(46,204,143,.3);
 }
-.geo-center span { color: rgba(255,255,255,.6); }
+.hv-core span { color: rgba(255,255,255,.6); }
 
-/* Satellites orbitaux */
-.sat-track {
+/* Pills aux 4 points cardinaux — rayon 150px du centre (220px) */
+.hv-pill {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 0; height: 0;
-}
-.s1 { animation: orb 22s  0s    linear infinite; }
-.s2 { animation: orb 22s -5.5s  linear infinite; }
-.s3 { animation: orb 22s -11s   linear infinite; }
-.s4 { animation: orb 22s -16.5s linear infinite; }
-@keyframes orb {
-  from { transform: rotate(0deg)   translateY(-175px); }
-  to   { transform: rotate(360deg) translateY(-175px); }
-}
-.sat-pill {
-  position: absolute;
-  transform: translate(-50%,-50%);
-  background: rgba(20,20,20,.95);
+  background: rgba(18,18,18,.96);
   border: 1px solid rgba(46,204,143,.3);
   border-radius: 100px;
-  padding: .45rem 1rem;
-  font-size: .82rem;
+  padding: .5rem 1.1rem;
+  font-size: .83rem;
   font-weight: 500;
   color: var(--c-text);
   white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(0,0,0,.6), 0 0 14px rgba(46,204,143,.08);
+  box-shadow: 0 4px 24px rgba(0,0,0,.55), 0 0 14px rgba(46,204,143,.08);
+  transform: translate(-50%, -50%);
 }
-.s1 .sat-pill { animation: unorb 22s  0s    linear infinite; }
-.s2 .sat-pill { animation: unorb 22s -5.5s  linear infinite; }
-.s3 .sat-pill { animation: unorb 22s -11s   linear infinite; }
-.s4 .sat-pill { animation: unorb 22s -16.5s linear infinite; }
-@keyframes unorb {
-  from { transform: translate(-50%,-50%) rotate(0deg); }
-  to   { transform: translate(-50%,-50%) rotate(-360deg); }
+
+/* Positions + animations float décalées */
+.hv-top    { top: calc(50% - 150px); left: 50%;            animation: fv 5s  0s   ease-in-out infinite; }
+.hv-right  { top: 50%;              left: calc(50% + 150px); animation: fh 6s  1.2s ease-in-out infinite; }
+.hv-bottom { top: calc(50% + 150px); left: 50%;            animation: fv 5s  2.4s ease-in-out infinite; }
+.hv-left   { top: 50%;              left: calc(50% - 150px); animation: fh 6s  3.6s ease-in-out infinite; }
+
+@keyframes fv {
+  0%,100% { transform: translate(-50%,-50%) translateY(0); }
+  50%      { transform: translate(-50%,-50%) translateY(-10px); }
+}
+@keyframes fh {
+  0%,100% { transform: translate(-50%,-50%) translateX(0); }
+  50%      { transform: translate(-50%,-50%) translateX(8px); }
 }
 
 /* ---- MARQUEE ---- */
