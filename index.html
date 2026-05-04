@@ -77,70 +77,99 @@
 
 <main>
 
-  <!-- HERO AETHERFLOW -->
+  <!-- HERO -->
   <section class="hero hero-aether" id="heroAether">
-    <canvas id="particles-canvas"></canvas>
 
-    <div class="container hero-content hero-content-center">
+    <!-- Ambient glow orbs (CSS, sans canvas) -->
+    <div class="hero-mesh" aria-hidden="true">
+      <div class="mesh-orb o1"></div>
+      <div class="mesh-orb o2"></div>
+      <div class="mesh-orb o3"></div>
+    </div>
 
-      <!-- Badge Google avis -->
-      <a href="https://g.page/r/VOTRE_ID_GOOGLE/review" target="_blank" rel="noopener" class="google-review-badge" aria-label="Voir nos avis Google">
-        <svg class="google-g" width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#EA4335" d="M24 9.5c3.14 0 5.95 1.08 8.16 2.86l6.1-6.1C34.47 3.03 29.52 1 24 1 14.74 1 6.9 6.51 3.42 14.38l7.1 5.52C12.26 13.26 17.65 9.5 24 9.5z"/>
-          <path fill="#4285F4" d="M46.52 24.5c0-1.58-.14-3.1-.4-4.57H24v8.64h12.65c-.55 2.94-2.2 5.43-4.68 7.1l7.18 5.58C43.3 37.43 46.52 31.44 46.52 24.5z"/>
-          <path fill="#FBBC05" d="M10.52 28.37A14.58 14.58 0 0 1 9.5 24c0-1.51.26-2.97.72-4.34l-7.1-5.52A23.93 23.93 0 0 0 0 24c0 3.87.92 7.52 2.55 10.74l7.97-6.37z"/>
-          <path fill="#34A853" d="M24 47c5.52 0 10.15-1.83 13.53-4.97l-7.18-5.58c-1.83 1.23-4.17 1.95-6.35 1.95-6.35 0-11.74-3.76-13.48-9.03l-7.97 6.37C6.9 41.49 14.74 47 24 47z"/>
-        </svg>
-        <div class="google-review-content">
-          <div class="google-review-top">
-            <span class="google-score">5,0</span>
-            <div class="google-stars">★★★★★</div>
+    <!-- Corps principal -->
+    <div class="hero-body">
+      <div class="container hero-inner">
+
+        <!-- Gauche : texte -->
+        <div class="hero-text">
+
+          <!-- Badge Google -->
+          <a href="https://g.page/r/VOTRE_ID_GOOGLE/review" target="_blank" rel="noopener" class="google-review-badge" aria-label="Voir nos avis Google">
+            <svg class="google-g" width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#EA4335" d="M24 9.5c3.14 0 5.95 1.08 8.16 2.86l6.1-6.1C34.47 3.03 29.52 1 24 1 14.74 1 6.9 6.51 3.42 14.38l7.1 5.52C12.26 13.26 17.65 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.52 24.5c0-1.58-.14-3.1-.4-4.57H24v8.64h12.65c-.55 2.94-2.2 5.43-4.68 7.1l7.18 5.58C43.3 37.43 46.52 31.44 46.52 24.5z"/>
+              <path fill="#FBBC05" d="M10.52 28.37A14.58 14.58 0 0 1 9.5 24c0-1.51.26-2.97.72-4.34l-7.1-5.52A23.93 23.93 0 0 0 0 24c0 3.87.92 7.52 2.55 10.74l7.97-6.37z"/>
+              <path fill="#34A853" d="M24 47c5.52 0 10.15-1.83 13.53-4.97l-7.18-5.58c-1.83 1.23-4.17 1.95-6.35 1.95-6.35 0-11.74-3.76-13.48-9.03l-7.97 6.37C6.9 41.49 14.74 47 24 47z"/>
+            </svg>
+            <div class="google-review-content">
+              <div class="google-review-top">
+                <span class="google-score">5,0</span>
+                <div class="google-stars">★★★★★</div>
+              </div>
+              <span class="google-review-label">Avis Google vérifiés</span>
+            </div>
+          </a>
+
+          <!-- Badge agence -->
+          <div class="hero-badge">
+            <svg class="badge-zap" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Agence web premium · France &amp; Francophonie</span>
+            <span class="dot"></span>
           </div>
-          <span class="google-review-label">Avis Google vérifiés</span>
+
+          <!-- H1 : révélation ligne par ligne -->
+          <h1 class="hero-h1" aria-label="Votre entreprise mérite un site web à la hauteur de vos ambitions">
+            <span class="h1-line"><span>Votre entreprise</span></span>
+            <span class="h1-line h1-accent"><span><em>mérite un site web</em></span></span>
+            <span class="h1-line"><span>à la hauteur</span></span>
+          </h1>
+
+          <p class="hero-sub">Sites vitrines professionnels livrés en 5 à 21 jours, SEO inclus, sans abonnement plateforme. Pour artisans, entrepreneurs et startups en France et dans la francophonie.</p>
+
+          <!-- CTA -->
+          <div class="hero-cta">
+            <a href="contact.html" class="btn btn-primary btn-lg"><span>Démarrer votre projet</span><span class="btn-arrow"></span></a>
+            <a href="realisations.html" class="btn btn-secondary"><span>Voir nos réalisations</span></a>
+          </div>
+
         </div>
-      </a>
 
-      <!-- Badge agence -->
-      <div class="hero-badge">
-        <svg class="badge-zap" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        <span>Agence web premium · France &amp; Francophonie</span>
-        <span class="dot"></span>
+        <!-- Droite : orbite animée (desktop seulement) -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit-container">
+            <div class="geo-ring r1"></div>
+            <div class="geo-ring r2"></div>
+            <div class="geo-center">A<span>.</span></div>
+            <div class="sat-track s1"><div class="sat-pill">🖥 Site vitrine</div></div>
+            <div class="sat-track s2"><div class="sat-pill">🔍 SEO inclus</div></div>
+            <div class="sat-track s3"><div class="sat-pill">✏️ Design sur mesure</div></div>
+            <div class="sat-track s4"><div class="sat-pill">📱 Mobile-first</div></div>
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <!-- Accroche principale -->
-      <h1 data-split>Votre entreprise mérite un site web à la hauteur de vos ambitions</h1>
-      <!-- Services pills -->
-      <div class="hero-services">
-        <span class="hero-service-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/></svg>
-          Site vitrine
-        </span>
-        <span class="hero-service-sep">|</span>
-        <span class="hero-service-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          SEO
-        </span>
-        <span class="hero-service-sep">|</span>
-        <span class="hero-service-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-          Design sur mesure
-        </span>
-        <span class="hero-service-sep">|</span>
-        <span class="hero-service-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-          Mobile-first
-        </span>
-        <span class="hero-service-sep">|</span>
-        <span class="hero-service-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
-          Prix fixes
-        </span>
-      </div>
-
-      <!-- CTA -->
-      <div class="hero-cta hero-cta-center">
-        <a href="contact.html" class="btn btn-primary btn-lg"><span>Démarrer votre projet</span><span class="btn-arrow"></span></a>
-        <a href="realisations.html" class="btn btn-secondary"><span>Voir nos réalisations</span></a>
+    <!-- Bandeau défilant -->
+    <div class="hero-marquee" aria-hidden="true">
+      <div class="mq-track">
+        <span>Site vitrine</span><span class="mq-dot">·</span>
+        <span>SEO inclus</span><span class="mq-dot">·</span>
+        <span>Prix fixes</span><span class="mq-dot">·</span>
+        <span>Mobile-first</span><span class="mq-dot">·</span>
+        <span>100% à vous</span><span class="mq-dot">·</span>
+        <span>Design sur mesure</span><span class="mq-dot">·</span>
+        <span>Livraison en 5 jours</span><span class="mq-dot">·</span>
+        <span>Aucun abonnement</span><span class="mq-dot">·</span>
+        <span>Site vitrine</span><span class="mq-dot">·</span>
+        <span>SEO inclus</span><span class="mq-dot">·</span>
+        <span>Prix fixes</span><span class="mq-dot">·</span>
+        <span>Mobile-first</span><span class="mq-dot">·</span>
+        <span>100% à vous</span><span class="mq-dot">·</span>
+        <span>Design sur mesure</span><span class="mq-dot">·</span>
+        <span>Livraison en 5 jours</span><span class="mq-dot">·</span>
+        <span>Aucun abonnement</span><span class="mq-dot">·</span>
       </div>
     </div>
 
